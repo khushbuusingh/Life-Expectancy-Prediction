@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class ="text-white">Predict MyLife</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href=" style.css" rel="stylesheet">
+    <style>
+        /* To hide forms initially */
+        .hidden {
+            display: none;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif; /* Applying the custom font */
+        }
+
+        /* Custom styles for hover effect on nav links */
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6; /* Blue color on hover */
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-gray-700 to-black text-white">
+    <header class="p-6">
+        <nav class="flex justify-between">
+            <div class="text-2xl font-bold">Predict MyLife</div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="nav-link hover:underline">Home</a></li>
+                <li><a href="{{ url_for('index') }}" class="nav-link hover:underline">Features</a></li>
+                <li><a href="{{ url_for('blogs') }}" class="nav-link hover:underline">Blogs</a></li>
+                <li><a href="{{ url_for('faq') }}" class="nav-link hover:underline">FAQs</a></li>
+                <li><a href="{{ url_for('contactus') }}" class="nav-link hover:underline">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="w-full max-w-2xl bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">1. What is the purpose of this website?</h3>
+                    <p class="mt-2 text-gray-400">This website provides insights and tools for predicting life expectancy based on personal health data.</p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">2. How does the life expectancy calculator work?</h3>
+                    <p class="mt-2 text-gray-400">The calculator asks you a series of health-related questions and uses statistical models to provide an estimate of your life expectancy.</p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">3. Is my data secure?</h3>
+                    <p class="mt-2 text-gray-400">Yes, we take data security seriously and follow best practices to ensure your information is kept private.</p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">4. Can I trust the predictions provided?</h3>
+                    <p class="mt-2 text-gray-400">While we strive for accuracy, predictions are estimates based on statistical averages and should not be considered definitive.</p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">5. How can I contact support?</h3>
+                    <p class="mt-2 text-gray-400">You can reach out to our support team through the Contact Us page or via email at support@example.com.</p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">6. Are there any costs associated with using the calculator?</h3>
+                    <p class="mt-2 text-gray-400">No, the life expectancy calculator is free to use for all users.</p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold">7. Can I change my answers after submitting?</h3>
+                    <p class="mt-2 text-gray-400">Yes, you can go back and edit your answers at any time to get updated predictions.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-6 text-center">
+        <p>&copy; 2024 Predict MyLife. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

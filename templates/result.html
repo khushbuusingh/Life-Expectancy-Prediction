@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class ="text-white">Predict MyLife</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href=" style.css" rel="stylesheet">
+    <style>
+        /* To hide forms initially */
+        .hidden {
+            display: none;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif; /* Applying the custom font */
+        }
+
+        /* Custom styles for hover effect on nav links */
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6; /* Blue color on hover */
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-gray-700 to-black text-white">
+    <header class="p-6">
+        <nav class="flex justify-between">
+            <div class="text-2xl font-bold">Predict MyLife</div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="nav-link hover:underline">Home</a></li>
+                <li><a href="{{ url_for('index') }}" class="nav-link hover:underline">Features</a></li>
+                <li><a href="{{ url_for('blogs') }}" class="nav-link hover:underline">Blogs</a></li>
+                <li><a href="{{ url_for('faq') }}" class="nav-link hover:underline">FAQs</a></li>
+                <li><a href="{{ url_for('contactus') }}" class="nav-link hover:underline">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <!-- <main class="flex-grow flex items-center justify-center p-6">
+        <div class="w-full max-w-lg bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-center mb-6">Your Life Expectancy Prediction</h1>
+            <div>
+                <p>Prediction: {{ prediction }}</p>
+            </div>
+
+        </div>
+    </main> -->
+
+    <main class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+        <!-- Predicted Life Expectancy -->
+        <h2 class="text-3xl font-bold text-center mb-6">Predicted Life Expectancy</h2>
+        <p class="text-2xl text-center mb-8">
+            Based on your inputs, your predicted life expectancy is:
+            <span class="text-blue-500">{{ prediction }} years</span>
+        </p>
+
+        <!-- 2x2 Grid for Lifestyle Messages -->
+        <div class="grid grid-cols-2 gap-6 mb-8">
+            <!-- Smoking Section -->
+            <div id="smokingMessage" class="bg-gray-900 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Smoking</h3>
+                <img id="smokingImage" src="" alt="Smoking" class="w-full h-40 object-cover rounded mb-4">
+                <p class="text-lg" id="smokingText"></p>
+            </div>
+
+            <!-- Drinking Section -->
+            <div id="drinkingMessage" class="bg-gray-900 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Drinking</h3>
+                <img id="drinkingImage" src="" alt="Drinking" class="w-full h-40 object-cover rounded mb-4">
+                <p class="text-lg" id="drinkingText"></p>
+            </div>
+
+            <!-- BMI Section -->
+            <div id="bmiMessage" class="bg-gray-900 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">BMI</h3>
+                <img id="bmiImage" src="" alt="BMI" class="w-full h-40 object-cover rounded mb-4">
+                <p class="text-lg" id="bmiText"></p>
+            </div>
+
+            <!-- Vaccination Section -->
+            <div id="vaccinationMessage" class="bg-gray-900 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Vaccination</h3>
+                <img id="vaccinationImage" src="" alt="Vaccination" class="w-full h-40 object-cover rounded mb-4">
+                <p class="text-lg" id="vaccinationText"></p>
+            </div>
+        </div>
+
+        <!-- Link to Blogs -->
+        <div class="text-center">
+            <a href="{{ url_for('blogs') }}" class="text-blue-500 hover:underline text-lg">Check out our blogs for more tips on improving your lifestyle!</a>
+        </div>
+    </main>
+
+    <script>
+        // Function to dynamically set messages based on user inputs
+        function setLifestyleMessages(smoking, drinking, bmi, dtp3, mcv2) {
+            // Smoking Message
+            const smokingText = document.getElementById('smokingText');
+            const smokingImage = document.getElementById('smokingImage');
+            if (smoking === 'yes') {
+                smokingText.textContent = "Smoking damages your lungs, increases the risk of heart disease, and significantly shortens life expectancy. Quitting today can improve your overall health, increase your energy levels, and reduce the risk of chronic diseases. Reach out to a healthcare provider for support and resources to quit smoking effectively.";
+                smokingImage.src = "{{ url_for('static', filename='smoking_bad.jpg') }}"; // Replace with your image path
+            } else {
+                smokingText.textContent = "Your decision to stay smoke-free is excellent for your health! It significantly reduces the risk of respiratory issues and heart disease, allowing you to enjoy a healthier and longer life. Keep up this positive habit and inspire others to make the same choice.";
+                smokingImage.src = "{{ url_for('static', filename='smoking_good.jpg') }}"; // Replace with your image path
+            }
+
+            // Drinking Message
+            const drinkingText = document.getElementById('drinkingText');
+            const drinkingImage = document.getElementById('drinkingImage');            
+            if (drinking === 'yes') {
+                drinkingText.textContent = "Excessive alcohol consumption harms your liver, disrupts sleep, and contributes to long-term health risks. Moderation is key to maintaining a healthier lifestyle. Consider limiting alcohol intake or exploring healthier beverage options to enhance your well-being.";
+                drinkingImage.src = "{{ url_for('static', filename='drinking_bad.jpg') }}" // Replace with your image path
+            } else {
+                drinkingText.textContent = "By avoiding alcohol, you're making a great choice for your health. This habit supports better sleep, liver function, and overall mental clarity. Stay hydrated with nutritious drinks like water, herbal teas, or fresh juices to maintain a vibrant lifestyle.";
+                drinkingImage.src = "{{ url_for('static', filename='drinking_good.jpeg') }}"; // Replace with your image path
+            }
+
+            // BMI Message
+            const bmiText = document.getElementById('bmiText');
+            const bmiImage = document.getElementById('bmiImage');
+            if (bmi > 25) {
+                bmiText.textContent = "A BMI above the healthy range may indicate excess weight, which can lead to health concerns like diabetes or hypertension. Incorporate regular physical activity, balanced meals, and portion control into your routine to work towards a healthier weight.";
+                bmiImage.src = "{{ url_for('static', filename='bmi_bad.jpg') }}"; // Replace with your image path
+            } else if (bmi < 18) {
+                bmiText.textContent = "A BMI below the normal range may suggest undernutrition. A well-balanced diet rich in calories, proteins, and healthy fats, along with guidance from a nutritionist, can help achieve an ideal weight for your body type.";
+                bmiImage.src = "{{ url_for('static', filename='bmi_bad.jpg') }}"; // Replace with your image path
+            } else {
+                bmiText.textContent = "Your BMI is within the healthy range. Fantastic work! Maintain this balance by eating wholesome foods, staying active, and managing stress. Regular check-ups can help ensure you're on the right track.";
+                bmiImage.src = "{{ url_for('static', filename='bmi_good.jpg') }}"; // Replace with your image path
+            }
+
+            // Vaccination Message
+            const vaccinationText = document.getElementById('vaccinationText');
+            const vaccinationImage = document.getElementById('vaccinationImage');
+            if (dtp3 === 'yes' && mcv2 === 'yes') {
+                vaccinationText.textContent = "You're fully vaccinated! This significantly reduces the risk of preventable diseases, protecting you and those around you. Keep monitoring for additional vaccinations as recommended by your healthcare provider to maintain your protection.";
+                vaccinationImage.src = "{{ url_for('static', filename='vaccination_good.jpg') }}"; // Replace with your image path
+            } else {
+                vaccinationText.textContent = "Vaccines are essential for protecting against life-threatening diseases. Consult your doctor to complete your vaccination schedule for optimal health and well-being. Staying up-to-date on vaccinations is one of the simplest ways to enhance your life expectancy.";
+                vaccinationImage.src = "{{ url_for('static', filename='vaccination_bad.jpg') }}"; // Replace with your image path
+            }
+        }
+
+        // Example data passed to the function (replace these with actual values from the backend)
+        const smoking = "{{ smoking }}"; // Replace with actual value
+        const drinking = "{{ drinking }}"; // Replace with actual value
+        const bmi = parseFloat("{{ bmi }}"); // Replace with actual value
+        const dtp3 = "{{ dtp3 }}"; // Replace with actual value
+        const mcv2 = "{{ mcv2 }}"; // Replace with actual value
+
+        // Set the lifestyle messages
+        setLifestyleMessages(smoking, drinking, bmi, dtp3, mcv2);
+    </script>
+
+    <footer class="p-6 text-center">
+        <p>&copy; 2024 Predict MyLife. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class ="text-white">Predict MyLife</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href=" style.css" rel="stylesheet">
+    <style>
+        /* To hide forms initially */
+        .hidden {
+            display: none;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif; /* Applying the custom font */
+        }
+
+        /* Custom styles for hover effect on nav links */
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6; /* Blue color on hover */
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-gray-700 to-black text-white">
+    <header class="p-6">
+        <nav class="flex justify-between">
+            <div class="text-2xl font-bold">Predict MyLife</div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="nav-link hover:underline">Home</a></li>
+                <li><a href="{{ url_for('index') }}" class="nav-link hover:underline">Features</a></li>
+                <li><a href="{{ url_for('blogs') }}" class="nav-link hover:underline">Blogs</a></li>
+                <li><a href="{{ url_for('faq') }}" class="nav-link hover:underline">FAQs</a></li>
+                <li><a href="{{ url_for('contactus') }}" class="nav-link hover:underline">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex flex-col">
+       
+        <section id="blogs" class="my-10 px-10">
+            <h2 class="text-3xl font-bold text-center">Blogs</h2>
+            <div class="flex flex-wrap justify-between mt-6">
+                <article class="bg-gray-800 p-4 rounded-lg my-4 flex flex-col items-center" style="width: 30%;">
+                    <img src="{{ url_for('static', filename='blog1.jpeg') }}" class="rounded-lg shadow-lg mb-4">
+                    <a href="https://bitesofwellness.com/" class="text-white hover:underline text-center">Bites of Wellness</a>
+                </article>
+                <article class="bg-gray-800 p-4 rounded-lg my-4 flex flex-col items-center" style="width: 30%;">
+                    <img src="{{ url_for('static', filename='blog2.jpeg') }}" class="rounded-lg shadow-lg mb-4">
+                    <a href="https://midlifehappinessexpert.com/en/blog/" class="text-white hover:underline text-center">Midlife Crises</a>
+                </article>
+                <article class="bg-gray-800 p-4 rounded-lg my-4 flex flex-col items-center" style="width: 30%;">
+                    <img src="{{ url_for('static', filename='blog3.jpeg') }}" class="rounded-lg shadow-lg mb-4">
+                    <a href="https://www.careinsurance.com/blog/health-insurance-articles/how-to-increase-life-expectancy" class="text-white hover:underline text-center">How to Increase Life Expectancy</a>
+                </article>
+                <article class="bg-gray-800 p-4 rounded-lg my-4 flex flex-col items-center" style="width: 30%;">
+                    <img src="{{ url_for('static', filename='blog4.jpeg') }}" class="rounded-lg shadow-lg mb-4">
+                    <a href="https://yourmeaninginlife.com/blog" class="text-white hover:underline text-center">Meaning Of Life</a>
+                </article>
+                <article class="bg-gray-800 p-4 rounded-lg my-4 flex flex-col items-center" style="width: 30%;">
+                    <img src="{{ url_for('static', filename='blog5.jpeg') }}" class="rounded-lg shadow-lg mb-4">
+                    <a href="https://www.swjen.com.sg/blog/importance-family-planning.html" class="text-white hover:underline text-center">Importance of Family Planning</a>
+                </article>
+                <article class="bg-gray-800 p-4 rounded-lg my-4 flex flex-col items-center" style="width: 30%;">
+                    <img src="{{ url_for('static', filename='blog6.jpeg') }}" class="rounded-lg shadow-lg mb-4">
+                    <a href="https://www.sahilbloom.com/newsletter/the-most-important-decision-of-your-life" class="text-white hover:underline text-center">The Most Important Decision Of Your Life</a>
+                </article>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="p-6 text-center">
+        <p>&copy; 2024 Predict MyLife. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>
+
